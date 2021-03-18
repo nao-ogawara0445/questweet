@@ -1,0 +1,10 @@
+<h1>Question</h1>
+<%#render  heder%>
+<% unless user_signed_in? %>
+<%= link_to "Sign up", new_user_registration_path, class: 'btn'%>
+<%= link_to "Sign in", user_session_path, class: 'btn'%>
+<% else %>
+<%= link_to 'ログアウト',  destroy_user_session_path, method: :delete, class: 'btn'  %>
+<%= link_to current_user.nickname,  edit_user_path(current_user),  class: 'btn'  %>
+<%= link_to "質問をする",root_path %>
+<% end %>
