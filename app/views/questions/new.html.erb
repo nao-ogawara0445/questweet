@@ -1,0 +1,14 @@
+<h2>Question </h2>
+<%= form_with model: @question, local: true do |f| %>
+<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autocomplete: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :explain %><br />
+    <%= f.text_field :explain, autocomplete: true %>
+  </div>
+   
+   <%= f.submit class: 'chat-room-form__action-btn'%>
+ <% end %>
