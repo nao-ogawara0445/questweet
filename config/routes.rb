@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   get 'user/edit'
   devise_for :users
-  get 'question/index'
+  get 'questions/index'
   get 'comments/index'
-  root to: "question#index"
+  root to: "questions#index"
   resources :users ,only:[:edit, :update]
+  resources :questions,only:[:index,:new, :create]
 end
