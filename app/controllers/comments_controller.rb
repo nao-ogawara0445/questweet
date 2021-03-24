@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
   def create
-    @comment=Comment.create(comment_params)
+    
     #binding.pry
+    @comment=Comment.create(comment_params)
    if Obscenity.profane?(@comment.answer)
-
-    redirect_to "/questions/#{@comment.question_id}"
+    @comment.answer="卑猥な表現です"
+    @comment=Comment.create
+    redirect_to root_path
    else
+    @comment.answer="卑猥な表現ではありません"
     redirect_to "/questions/#{@comment.question_id}"
    end
   end
