@@ -1,0 +1,27 @@
+<h1><%=  @question.title %></h1>
+
+<p><%=  @question.explain %></p>
+
+
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@question, @comment], local: true) do |form| %>
+        <%= form.text_area :answer, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user.nickname %>：</strong>
+          <%= comment.answer %>
+        </p>
+      <% end %>
+    </div>
+
+
+  </div>

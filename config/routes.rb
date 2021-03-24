@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   get 'comments/index'
   root to: "questions#index"
   resources :users ,only:[:edit, :update]
-  resources :questions,only:[:index,:new, :create]
+  resources :questions,only:[:index,:new, :create,:show] do
+    resources :comments, only: :create
+  end
+  
 end
