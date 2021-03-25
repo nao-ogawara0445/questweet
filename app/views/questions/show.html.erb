@@ -1,0 +1,37 @@
+<h1><%=  @question.title %></h1>
+<h4>〜〜〜〜〜＜質問詳細＞〜〜〜〜〜</h4>
+<p><%=  @question.explain %></p>
+<h4>〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜</h4>
+
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@question, @comment], local: true) do |form| %>
+        <%= form.text_area :answer, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+          <% if current_user.id == @question.user_id %>
+            <%= link_to "質問を削除する",question_path(@question), method: :delete %>
+          <% end %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+
+    
+
+    <div class="comments">
+      <h4>＜みんなの回答一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user.nickname %>：</strong>
+          <%= auto_link(comment.answer, html: { target: '_blank' }) %> 
+           
+        </p>
+        
+      <% end %>
+      
+    </div>
+
+
+  </div>
+  <a href='http://localhost:3000/questions/2' target='_blank'> http://localhost:3000/questions/2</a>
+  <a href="http://localhost:3000/questions/2" target='_blank'> http://localhost:3000/questions/23</a>
