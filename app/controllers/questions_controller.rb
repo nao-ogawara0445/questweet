@@ -21,6 +21,12 @@ class QuestionsController < ApplicationController
     @comment=Comment.new
     @comments= @question.comments.includes(:user)
   end
+
+  def destroy
+    @question=Question.find(params[:id])
+    @question.destroy
+    redirect_to root_path
+  end
   
   private
   def question_params

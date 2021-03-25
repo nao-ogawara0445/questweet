@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
 
   has_many :users
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :title
