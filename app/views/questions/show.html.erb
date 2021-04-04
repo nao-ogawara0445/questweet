@@ -1,7 +1,8 @@
-<h1><%=  @question.title %></h1>
-<h4>〜〜〜〜〜＜質問詳細＞〜〜〜〜〜</h4>
-<p><%=  @question.explain %></p>
-<h4>〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜</h4>
+<div class='show_main'>
+
+  <div class='show_titel'><%=  @question.title %> </div>
+    <div class='show_explain_header'>＜質問詳細＞</div>
+      <div class='show_explain'><%=  @question.explain %> </div>
 
   <div class="container">
     <% if user_signed_in? %>
@@ -34,4 +35,5 @@
 
 
   </div>
-
+  
+  </div>
